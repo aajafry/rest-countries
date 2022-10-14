@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Countries, Filter, Header } from "../components/index";
 
 // import react theme
-// import { useTheme } from "next-themes";
+import { useTheme } from "next-themes";
 
 // define API URL
 const URL = "https://restcountries.com/v3.1/all";
@@ -14,7 +14,7 @@ export default function Home({ data }) {
   const [queryRegion, setQueryRegion] = useState("");
   const [removedCountry, setRemovedCountry] = useState("");
 
-  // const { theme, setTheme } = useTheme("light");
+  const { theme, setTheme } = useTheme("light");
 
   const filterCountries = (countries) => {
     const countriesData = countries.filter((country) => {
@@ -46,8 +46,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Header theme={theme} setTheme={setTheme} /> */}
-      
+      <Header theme={theme} setTheme={setTheme} />
 
       <Filter
         getSearchValue={setQueryCountry}

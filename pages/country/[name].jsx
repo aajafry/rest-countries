@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-// import { Header } from "../../components";
+import { Header } from "../../components";
 // import react theme
-// import { useTheme } from "next-themes";
+import { useTheme } from "next-themes";
 
 export default function Name({ countryData } = {}) {
-  // const { theme, setTheme } = useTheme("light");
+  const { theme, setTheme } = useTheme("light");
 
   const {
     flags,
@@ -32,7 +32,7 @@ export default function Name({ countryData } = {}) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Header theme={theme} setTheme={setTheme} /> */}
+      <Header theme={theme} setTheme={setTheme} />
       <div className="h-screen bg-slate-300 dark:bg-slate-700">
         <Link href={"/"}>
           <button className="inline-block text-gray-700 dark:text-gray-300  bg-slate-200 dark:bg-slate-600 py-2 px-4 m-8 rounded-md shadow-lg hover:bg-slate-300 dark:hover:bg-slate-800 duration-300">
@@ -145,7 +145,7 @@ export async function getStaticProps({ params }) {
     "https://restcountries.com/v3.1/name/" + params.name
   );
   const countryData = (await response.json())[0];
-  
+
   return {
     props: { countryData },
   };
